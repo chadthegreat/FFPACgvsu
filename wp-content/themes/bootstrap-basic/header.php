@@ -19,15 +19,13 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
-	<!--wordpress head-->
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+
 <!--[if lt IE 8]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 <![endif]-->
-
-
 
 <nav class="navbar navbar-default">
 	<div class="container">
@@ -45,7 +43,7 @@
 				<?php dynamic_sidebar('navbar-right'); ?>
 			</div>
 		</div>
-	</div><!-- /.container-fluid -->
+	</div>
 </nav>
 
 <div class="container page-container">

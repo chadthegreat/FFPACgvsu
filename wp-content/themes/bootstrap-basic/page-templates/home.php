@@ -2,7 +2,7 @@
 /*
  * Template Name: Homepage
  *
- * @Author:	Arbor Solutions
+ * @Author:	Chris Schaefer
  *
 */
 get_header();
