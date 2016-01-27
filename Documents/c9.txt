@@ -1,3 +1,7 @@
 MySQL
-  Root User: schaefec
-  Database Name: c9
+  Hostname:       schaefec-ffpac-2473826
+  Root User:      schaefec
+  Database Name:  c9
+
+PHPMyAdmin Installation complete. You can log in at: https://ffpac-schaefec.c9users.io/phpmyadmin with the following username (and blank password):
+  Username: schaefec
