@@ -123,8 +123,8 @@ TRUNCATE TABLE `wp_options`;
 --
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-(1, 'siteurl', 'http://ffpac.localhost', 'yes'),
-(2, 'home', 'http://ffpac.localhost', 'yes'),
+(1, 'siteurl', 'http://localhost', 'yes'),
+(2, 'home', 'http://localhost', 'yes'),
 (3, 'blogname', 'FFPAC', 'yes'),
 (4, 'blogdescription', 'Just another WordPress site', 'yes'),
 (5, 'users_can_register', '0', 'yes'),
@@ -443,10 +443,10 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (14, 1, '2016-01-22 17:02:11', '2016-01-22 17:02:11', 'Use the options below to select a room to view all issues, complaints, and their status.', 'Room Select', '', 'publish', 'closed', 'closed', '', 'room-select', '', '', '2016-01-22 17:02:11', '2016-01-22 17:02:11', '', 0, 'http://www.localhost/?page_id=14', 0, 'page', '', 0),
 (15, 1, '2016-01-22 17:02:11', '2016-01-22 17:02:11', 'Use the options below to select a room to view all issues, complaints, and their status.', 'Room Select', '', 'inherit', 'closed', 'closed', '', '14-revision-v1', '', '', '2016-01-22 17:02:11', '2016-01-22 17:02:11', '', 14, 'http://www.localhost/14-revision-v1/', 0, 'revision', '', 0),
 (16, 1, '2016-01-28 01:11:52', '2016-01-28 01:11:52', '', 'Room View', '', 'publish', 'closed', 'closed', '', 'room-view', '', '', '2016-01-28 01:11:52', '2016-01-28 01:11:52', '', 0, 'http://localhost/?page_id=16', 0, 'page', '', 0),
-(17, 1, '2016-01-28 01:11:41', '2016-01-28 01:11:41', '', 'Room View', '', 'inherit', 'closed', 'closed', '', '16-revision-v1', '', '', '2016-01-28 01:11:41', '2016-01-28 01:11:41', '', 16, 'http://ffpac.localhost/16-revision-v1/', 0, 'revision', '', 0),
-(18, 1, '2016-01-28 01:12:28', '2016-01-28 01:12:28', ' ', '', '', 'publish', 'closed', 'closed', '', '18', '', '', '2016-01-28 01:12:28', '2016-01-28 01:12:28', '', 0, 'http://ffpac.localhost/?p=18', 2, 'nav_menu_item', '', 0),
-(19, 1, '2016-01-28 01:12:07', '0000-00-00 00:00:00', ' ', '', '', 'draft', 'closed', 'closed', '', '', '', '', '2016-01-28 01:12:07', '0000-00-00 00:00:00', '', 0, 'http://ffpac.localhost/?p=19', 1, 'nav_menu_item', '', 0),
-(20, 1, '2016-01-28 01:12:28', '2016-01-28 01:12:28', ' ', '', '', 'publish', 'closed', 'closed', '', '20', '', '', '2016-01-28 01:12:28', '2016-01-28 01:12:28', '', 0, 'http://ffpac.localhost/?p=20', 3, 'nav_menu_item', '', 0);
+(17, 1, '2016-01-28 01:11:41', '2016-01-28 01:11:41', '', 'Room View', '', 'inherit', 'closed', 'closed', '', '16-revision-v1', '', '', '2016-01-28 01:11:41', '2016-01-28 01:11:41', '', 16, 'http://localhost/16-revision-v1/', 0, 'revision', '', 0),
+(18, 1, '2016-01-28 01:12:28', '2016-01-28 01:12:28', ' ', '', '', 'publish', 'closed', 'closed', '', '18', '', '', '2016-01-28 01:12:28', '2016-01-28 01:12:28', '', 0, 'http://localhost/?p=18', 2, 'nav_menu_item', '', 0),
+(19, 1, '2016-01-28 01:12:07', '0000-00-00 00:00:00', ' ', '', '', 'draft', 'closed', 'closed', '', '', '', '', '2016-01-28 01:12:07', '0000-00-00 00:00:00', '', 0, 'http://localhost/?p=19', 1, 'nav_menu_item', '', 0),
+(20, 1, '2016-01-28 01:12:28', '2016-01-28 01:12:28', ' ', '', '', 'publish', 'closed', 'closed', '', '20', '', '', '2016-01-28 01:12:28', '2016-01-28 01:12:28', '', 0, 'http://localhost/?p=20', 3, 'nav_menu_item', '', 0);
 
 -- --------------------------------------------------------
 
