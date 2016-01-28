@@ -5,7 +5,6 @@
  * @Author:	Chris Schaefer
  *
 */
-session_start();
 $debug = false;
 if(isset($_REQUEST["campus"])) {
 	$_SESSION["APP"]["campus"] = $_REQUEST["campus"];

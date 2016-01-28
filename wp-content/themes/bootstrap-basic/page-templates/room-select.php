@@ -5,7 +5,6 @@
  * @Author:	Chris Schaefer
  *
 */
-session_start();
 function output_select($options, $selected) {
 	if(isset($options) && is_array($options)) {
 		echo "<option>Select</option>";
