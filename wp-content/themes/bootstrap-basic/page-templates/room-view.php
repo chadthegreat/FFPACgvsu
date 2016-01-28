@@ -5,7 +5,8 @@
  * @Author:	Chris Schaefer
  *
 */
-session_start();
+include_once ABSPATH . "Application/includes/initialize.php";
+
 $debug = false;
 
 // Set any selected room variables
