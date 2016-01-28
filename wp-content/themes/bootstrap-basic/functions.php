@@ -142,6 +142,11 @@ if (!function_exists('bootstrapBasicEnqueueScripts')) {
 		wp_enqueue_script('respond-script', get_template_directory_uri() . '/js/vendor/respond.min.js');
 		wp_enqueue_script('html5-shiv-script', get_template_directory_uri() . '/js/vendor/html5shiv.js');
 		wp_enqueue_script('jquery');
+		if(!is_admin()) {
+			wp_deregister_script('jquery');
+			wp_register_script('jquery', ("https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"), false, '1.12.0');
+			wp_enqueue_script('jquery');
+		}
 		wp_enqueue_script('bootstrap-script', get_template_directory_uri() . '/js/vendor/bootstrap.min.js', array(), false, true);
 		wp_enqueue_script('main-script', get_template_directory_uri() . '/js/main.js', array(), false, true);
 		wp_enqueue_style('bootstrap-basic-style', get_stylesheet_uri());
@@ -159,7 +164,6 @@ if (is_admin()) {
 	add_action('admin_menu', array($bbsc_adminhelp, 'themeHelpMenu'));
 	unset($bbsc_adminhelp);
 }
-
 
 /**
  * Custom template tags for this theme.
