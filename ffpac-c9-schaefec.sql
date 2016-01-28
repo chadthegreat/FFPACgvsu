@@ -2,7 +2,7 @@
 -- version 4.4.3
 -- http://www.phpmyadmin.net
 --
--- Host: ffpac-schaefec.c9users.io
+-- Host: localhost
 -- Generation Time: Jan 28, 2016 at 10:45 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
