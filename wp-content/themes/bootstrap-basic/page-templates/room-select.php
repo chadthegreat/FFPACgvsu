@@ -7,6 +7,8 @@
 */
 include_once ABSPATH . "Application/includes/initialize.php";
 
+// ToDo: After we have the data we will need to load campus and then update the onchange to call an ajax script to load building and same for building -> room.
+
 $data["campus"] = array("ALL"=>"Allendale","PEW"=>"Pew");
 $data["building"] = array("CHS"=>"Cook-DeVos Center for Health Sciences",
 	"DEV"=>"DeVos Hall",
@@ -23,23 +25,23 @@ get_header();
 		<?php the_content(); ?>
 		<form id="form-room-select" name="room-select" action="/room-view" method="post" onsubmit="return validateselection(this)">
 			<div class="row">
-				<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+				<div class="col-xs-12 col-sm-8">
 					<div class="form-group">
 						<label for="campus">Campus</label>
 						<select name="campus" class="form-control">
-							<?php output_select($data["campus"],(isset($_SESSION) ? $_SESSION["APP"]["campus"] : null)); ?>
+							<?php output_select($data["campus"]); ?>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="building">Building</label>
 						<select name="building" class="form-control"<?php (isset($_SESSION["APP"]["building"]) ? "" : " disabled"); ?>>
-							<?php output_select($data["building"],(isset($_SESSION) ? $_SESSION["APP"]["building"] : null)); ?>
+							<?php output_select($data["building"]); ?>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="room">Room</label>
 						<select name="room" class="form-control"<?php (isset($_SESSION["APP"]["room"]) ? "" : " disabled"); ?>>
-							<?php output_select($data["room"],(isset($_SESSION) ? $_SESSION["APP"]["room"] : null)); ?>
+							<?php output_select($data["room"]); ?>
 						</select>
 					</div>
 					<input type="submit" name="submit" class="btn btn-block btn-primary" value="Select"<?php (isset($_SESSION["APP"]["room"]) ? "" : " disabled"); ?> />
@@ -47,38 +49,10 @@ get_header();
 			</div>
 		</form>
 	</div>
-	<script>
-		$(document).ready(function() {
-			$('form[name="room-select"] select[name="campus"]').on('change', function() {
-				if(this.value == "") {
-					$('form[name="room-select"] select[name="building"]').val('').attr('disabled','');
-					$('form[name="room-select"] select[name="room"]').val('').attr('disabled','');
-					$('form[name="room-select"] input[name="submit"]').attr('disabled','');
-				} else {
-					$('form[name="room-select"] select[name="building"]').removeAttr('disabled');
-				}
-			});
-			$('form[name="room-select"] select[name="building"]').on('change', function() {
-				if(this.value == "") {
-					$('form[name="room-select"] select[name="room"]').val('').attr('disabled','');
-				} else {
-					$('form[name="room-select"] select[name="room"]').removeAttr('disabled');
-				}
-			});
-			$('form[name="room-select"] select[name="room"]').on('change', function() {
-				if(this.value == "") {
-					$('form[name="room-select"] input[name="submit"]').attr('disabled','');
-				} else {
-					$('form[name="room-select"] input[name="submit"]').removeAttr('disabled','');
-				}
-			});
-		});
-		var validateselection = function(form) {
-			if(form.campus.value == "") { alert("Please select a campus"); return false; }
-			if(form.building.value == "") { alert("Please select a building"); return false; }
-			if(form.room.value == "") { alert("Please select a room"); return false; }
-			return true;
-		};
+	<script class="remOnLoad">
+		$('form[name="room-select"] select[name="campus"]').val('<?php echo isset($_SESSION) ? $_SESSION["APP"]["campus"] : ""; ?>');
+		$('form[name="room-select"] select[name="building"]').val('<?php echo isset($_SESSION) ? $_SESSION["APP"]["building"] : ""; ?>');
+		$('form[name="room-select"] select[name="room"]').val('<?php echo isset($_SESSION) ? $_SESSION["APP"]["room"] : ""; ?>');
 	</script>
 <?php endwhile;
 get_footer(); ?>

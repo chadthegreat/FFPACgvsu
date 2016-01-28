@@ -6,9 +6,9 @@
  * @param $options
  * @param $selected
  */
-function output_select($options, $selected) {
+function output_select($options, $selected = null) {
 	if(isset($options) && is_array($options)) {
-		echo "<option>Select</option>";
+		echo "<option value=\"\">Select</option>";
 		foreach($options as $value => $label) {
 			echo "<option value=\"$value\"";
 			if(isset($selected) && !empty($selected)) {
