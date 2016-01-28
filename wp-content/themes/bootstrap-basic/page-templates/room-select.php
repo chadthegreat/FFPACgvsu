@@ -45,17 +45,17 @@ get_header();
 					</div>
 					<div class="form-group">
 						<label for="building">Building</label>
-						<select name="building" class="form-control" disabled>
+						<select name="building" class="form-control"<?php (isset($_SESSION["APP"]["building"]) ? "" : " disabled"); ?>>
 							<?php output_select($data["building"],(isset($_SESSION) ? $_SESSION["APP"]["building"] : null)); ?>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="room">Room</label>
-						<select name="room" class="form-control" disabled>
+						<select name="room" class="form-control"<?php (isset($_SESSION["APP"]["room"]) ? "" : " disabled"); ?>>
 							<?php output_select($data["room"],(isset($_SESSION) ? $_SESSION["APP"]["room"] : null)); ?>
 						</select>
 					</div>
-					<input type="submit" name="submit" class="btn btn-block btn-primary" value="Select" disabled />
+					<input type="submit" name="submit" class="btn btn-block btn-primary" value="Select"<?php (isset($_SESSION["APP"]["room"]) ? "" : " disabled"); ?> />
 				</div>
 			</div>
 		</form>
