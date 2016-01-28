@@ -91,7 +91,7 @@ get_header();
 			if(form.building.value == "") { alert("Please select a building"); return false; }
 			if(form.room.value == "") { alert("Please select a room"); return false; }
 			return true;
-		}
+		};
 	</script>
 <?php endwhile;
 get_footer(); ?>
