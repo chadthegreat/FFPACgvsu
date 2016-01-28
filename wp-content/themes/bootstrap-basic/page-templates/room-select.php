@@ -5,6 +5,29 @@
  * @Author:	Chris Schaefer
  *
 */
+function output_select($options, $selected) {
+	if(isset($options) && is_array($options)) {
+		echo "<option>Select</option>";
+		foreach($options as $value => $label) {
+			echo "<option value=\"$value\"";
+			if(isset($selected) && !empty($selected)) {
+				if($value == $selected) {
+					echo " selected";
+				}
+			}
+			echo ">$label</option>";
+		}
+	}
+}
+
+$data["campus"] = array("ALL"=>"Allendale","PEW"=>"Pew");
+$data["building"] = array("CHS"=>"Cook-DeVos Center for Health Sciences",
+	"DEV"=>"DeVos Hall",
+	"EHC"=>"Eberhard Center",
+	"KEL"=>"KEL?",
+	"KEN"=>"Kennedy Hall",
+	"SCB"=>"L. William Seidman Center");
+$data["room"] = array("2315"=>"2315");
 get_header();
 ?>
 <?php while(have_posts()) : the_post(); ?>
@@ -17,28 +40,19 @@ get_header();
 					<div class="form-group">
 						<label for="campus">Campus</label>
 						<select name="campus" class="form-control">
-							<option value="">Select</option>
-							<option value="ALL">Allendale</option>
-							<option value="PEW">Pew</option>
+							<?php output_select($data["campus"],(isset($_SESSION) ? $_SESSION["APP"]["campus"] : null)); ?>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="building">Building</label>
 						<select name="building" class="form-control" disabled>
-							<option value="">Select</option>
-							<option value="CHS">Cook-DeVos Center for Health Sciences</option>
-							<option value="DEV">DeVos Hall</option>
-							<option value="EHC">Eberhard Center</option>
-							<option value="KEL">KEL?</option>
-							<option value="KEN">Kennedy Hall</option>
-							<option value="SCB">L. William Seidman Center</option>
+							<?php output_select($data["building"],(isset($_SESSION) ? $_SESSION["APP"]["building"] : null)); ?>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="room">Room</label>
 						<select name="room" class="form-control" disabled>
-							<option value="">Select</option>
-							<option value="2351">2351</option>
+							<?php output_select($data["room"],(isset($_SESSION) ? $_SESSION["APP"]["room"] : null)); ?>
 						</select>
 					</div>
 					<input type="submit" name="submit" class="btn btn-block btn-primary" value="Select" disabled />

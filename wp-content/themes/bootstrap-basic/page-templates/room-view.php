@@ -5,7 +5,8 @@
  * @Author:	Chris Schaefer
  *
 */
-$debug = true;
+session_start();
+$debug = false;
 get_header();
 // Todo: query database for labels of campus/building/room for .page-title
 ?>
@@ -35,6 +36,28 @@ get_header();
 				</div>
 			<?php }
 		?>
+		<table class="table">
+			<thead>
+			<tr>
+				<th>Complaint</th>
+				<th>Notes</th>
+				<th>Fixed</th>
+				<th>Partly Fixed</th>
+				<th>Not Fixed</th>
+			</tr>
+			</thead>
+			<tbody>
+			<?php for($i = 0; $i < 5; $i++) { ?>
+			<tr>
+				<td>Complaint information here</td>
+				<td>Notes here</td>
+				<td width="1%"><input type="radio" checked="checked"/></td>
+				<td width="1%"><input type="radio" /></td>
+				<td width="1%"><input type="radio" /></td>
+			</tr>
+			<?php } ?>
+			</tbody>
+		</table>
 	</div>
 <?php endwhile;
 get_footer(); ?>
