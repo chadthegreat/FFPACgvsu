@@ -5,7 +5,11 @@
  * @Author:	Chris Schaefer
  *
 */
+include_once ABSPATH . "Application/includes/initialize.php";
+
 $debug = false;
+
+// Set any selected room variables
 if(isset($_REQUEST["campus"])) {
 	$_SESSION["APP"]["campus"] = $_REQUEST["campus"];
 	if(isset($_REQUEST["building"])) {

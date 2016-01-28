@@ -5,20 +5,7 @@
  * @Author:	Chris Schaefer
  *
 */
-function output_select($options, $selected) {
-	if(isset($options) && is_array($options)) {
-		echo "<option>Select</option>";
-		foreach($options as $value => $label) {
-			echo "<option value=\"$value\"";
-			if(isset($selected) && !empty($selected)) {
-				if($value == $selected) {
-					echo " selected";
-				}
-			}
-			echo ">$label</option>";
-		}
-	}
-}
+include_once ABSPATH . "Application/includes/initialize.php";
 
 $data["campus"] = array("ALL"=>"Allendale","PEW"=>"Pew");
 $data["building"] = array("CHS"=>"Cook-DeVos Center for Health Sciences",
