@@ -5,7 +5,10 @@
  * @Author:	Chris Schaefer
  *
 */
+session_start();
 $debug = false;
+
+// Set any selected room variables
 if(isset($_REQUEST["campus"])) {
 	$_SESSION["APP"]["campus"] = $_REQUEST["campus"];
 	if(isset($_REQUEST["building"])) {
