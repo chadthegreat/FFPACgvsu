@@ -32,7 +32,7 @@ get_header();
 			<div class="col-xs-12 col-sm-4">
 				<div class="form-group">
 					<label for="building">Building</label>
-					<select name="building" class="form-control"<?php (isset($_SESSION["APP"]["building"]) ? "" : " disabled"); ?>>
+					<select name="building" class="form-control"<?php echo (isset($_SESSION["APP"]["building"]) ? "" : " disabled"); ?>>
 						<?php output_select($data["building"]); ?>
 					</select>
 				</div>
@@ -40,7 +40,7 @@ get_header();
 			<div class="col-xs-12 col-sm-4">
 				<div class="form-group">
 					<label for="room">Room</label>
-					<select name="room" class="form-control"<?php (isset($_SESSION["APP"]["room"]) ? "" : " disabled"); ?>>
+					<select name="room" class="form-control"<?php echo (isset($_SESSION["APP"]["room"]) ? "" : " disabled"); ?>>
 						<?php output_select($data["room"]); ?>
 					</select>
 				</div>
@@ -63,5 +63,10 @@ get_header();
 		</div>
 	</div>
 </div>
+	<script class="remOnLoad">
+		$('form[name="room-select"] select[name="campus"]').val('<?php echo isset($_SESSION["APP"]["campus"]) ? $_SESSION["APP"]["campus"] : ""; ?>');
+		$('form[name="room-select"] select[name="building"]').val('<?php echo isset($_SESSION["APP"]["building"]) ? $_SESSION["APP"]["building"] : ""; ?>');
+		$('form[name="room-select"] select[name="room"]').val('<?php echo isset($_SESSION["APP"]["room"]) ? $_SESSION["APP"]["room"] : ""; ?>');
+	</script>
 <?php endwhile;
 get_footer();
