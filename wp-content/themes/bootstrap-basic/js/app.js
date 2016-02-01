@@ -44,8 +44,6 @@ if(page == "room-select" || page == "walkthrough") {
     }
     return true;
   };
-} else if(page == "walkthrough") {
-
 }
 
 $(document).ready(

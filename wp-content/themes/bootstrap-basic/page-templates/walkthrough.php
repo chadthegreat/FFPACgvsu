@@ -74,6 +74,21 @@ get_header();
 				</table>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">New Complaint/Request</h3>
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<textarea class="form-control"></textarea>
+						</div>
+						<button class="btn btn-block btn-primary">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<script class="remOnLoad">
 		$('form[name="room-select"] select[name="campus"]').val('<?php echo isset($_SESSION) ? $_SESSION["APP"]["campus"] : ""; ?>');
