@@ -44,6 +44,13 @@ if(page == "room-select") {
     }
     return true;
   };
+} else if(page == "walkthrough") {
+
 }
 
-$(document).ready(function() { $('.remOnLoad').remove(); });
+$(document).ready(
+  function() {
+    $('.remOnLoad').remove();
+    $('[data-task="note-edit"]').on('click', function() { $('#note-edit').modal('show'); });
+  }
+);

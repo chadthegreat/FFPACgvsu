@@ -30,6 +30,8 @@
 <!--	</div>-->
 <!--</footer>-->
 		<!--wordpress footer-->
-		<?php wp_footer(); ?> 
+		<?php wp_footer();
+		include_once ABSPATH . "Application/modals/note-edit.php";
+		?>
 	</body>
 </html>

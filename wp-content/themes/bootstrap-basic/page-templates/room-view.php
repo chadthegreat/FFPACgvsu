@@ -63,9 +63,9 @@ get_header();
 				</thead>
 				<tbody>
 				<?php for ($i = 0; $i < 5; $i++) { ?>
-					<tr>
+					<tr data-id="">
 						<td>Complaint information here</td>
-						<td>Notes here</td>
+						<td data-task="note-edit">Notes here</td>
 						<td width="1%"><input type="radio" checked="checked"/></td>
 						<td width="1%"><input type="radio"/></td>
 						<td width="1%"><input type="radio"/></td>
