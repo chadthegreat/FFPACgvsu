@@ -3,7 +3,7 @@ var page = window.location.pathname.split('/')[1].split('?')[0];
 
 var root_dir = '/';
 
-if(page == "room-select") {
+if(page == "room-select" || page == "walkthrough") {
   $(document).ready(function () {
     $('form[name="room-select"] select[name="campus"]').on('change', function () {
       if (this.value == "") {
