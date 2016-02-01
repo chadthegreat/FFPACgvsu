@@ -34,25 +34,25 @@ get_header();
 					</div>
 					<div class="form-group">
 						<label for="building">Building</label>
-						<select name="building" class="form-control"<?php (isset($_SESSION["APP"]["building"]) ? "" : " disabled"); ?>>
+						<select name="building" class="form-control"<?php echo (isset($_SESSION["APP"]["building"]) ? "" : " disabled"); ?>>
 							<?php output_select($data["building"]); ?>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="room">Room</label>
-						<select name="room" class="form-control"<?php (isset($_SESSION["APP"]["room"]) ? "" : " disabled"); ?>>
+						<select name="room" class="form-control"<?php echo (isset($_SESSION["APP"]["room"]) ? "" : " disabled"); ?>>
 							<?php output_select($data["room"]); ?>
 						</select>
 					</div>
-					<input type="submit" name="submit" class="btn btn-block btn-primary" value="Select"<?php (isset($_SESSION["APP"]["room"]) ? "" : " disabled"); ?> />
+					<input type="submit" name="submit" class="btn btn-block btn-primary" value="Select"<?php echo (isset($_SESSION["APP"]["room"]) ? "" : " disabled"); ?> />
 				</div>
 			</div>
 		</form>
 	</div>
 	<script class="remOnLoad">
-		$('form[name="room-select"] select[name="campus"]').val('<?php echo isset($_SESSION) ? $_SESSION["APP"]["campus"] : ""; ?>');
-		$('form[name="room-select"] select[name="building"]').val('<?php echo isset($_SESSION) ? $_SESSION["APP"]["building"] : ""; ?>');
-		$('form[name="room-select"] select[name="room"]').val('<?php echo isset($_SESSION) ? $_SESSION["APP"]["room"] : ""; ?>');
+		$('form[name="room-select"] select[name="campus"]').val('<?php echo isset($_SESSION["APP"]["campus"]) ? $_SESSION["APP"]["campus"] : ""; ?>');
+		$('form[name="room-select"] select[name="building"]').val('<?php echo isset($_SESSION["APP"]["building"]) ? $_SESSION["APP"]["building"] : ""; ?>');
+		$('form[name="room-select"] select[name="room"]').val('<?php echo isset($_SESSION["APP"]["room"]) ? $_SESSION["APP"]["room"] : ""; ?>');
 	</script>
 <?php endwhile;
 get_footer(); ?>
