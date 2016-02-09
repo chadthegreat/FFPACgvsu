@@ -7,3 +7,4 @@ This is our capstone project. We consist of:
 ## Documents Folder
 This folder contains the following important documents:
 * Prospectus
+* Design Document
