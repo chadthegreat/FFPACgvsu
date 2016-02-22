@@ -20,6 +20,7 @@ $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
+$brand-michric:         #90C140 !default;
 
 
 //== Scaffolding
@@ -175,6 +176,10 @@ $btn-warning-border:             darken($btn-warning-bg, 5%) !default;
 $btn-danger-color:               #fff !default;
 $btn-danger-bg:                  $brand-danger !default;
 $btn-danger-border:              darken($btn-danger-bg, 5%) !default;
+
+$btn-michric-color:               #fff !default;
+$btn-michric-bg:                  $brand-michric !default;
+$btn-michric-border:              darken($btn-michric-bg, 5%) !default;
 
 $btn-link-disabled-color:        $gray-light !default;
 

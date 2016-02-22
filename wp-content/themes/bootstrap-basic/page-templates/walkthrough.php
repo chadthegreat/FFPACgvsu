@@ -55,19 +55,21 @@ get_header();
 					<tr>
 						<th>Complaint</th>
 						<th>Notes</th>
-						<th>Fixed</th>
-						<th>Partly Fixed</th>
-						<th>Not Fixed</th>
+						<th>Status</th>
 					</tr>
 					</thead>
 					<tbody>
 					<?php for ($i = 0; $i < 5; $i++) { ?>
 						<tr data-id="">
 							<td>Complaint information here</td>
-							<td data-task="note-edit">Notes here</td>
-							<td width="1%"><input type="radio" checked="checked"/></td>
-							<td width="1%"><input type="radio"/></td>
-							<td width="1%"><input type="radio"/></td>
+							<td data-task="note-edit" class="note-edit">Notes here</td>
+							<td width="10%">
+								<select name="status" class="form-control">
+									<option value="Fixed">Fixed</option>
+									<option value="Partly Fixed">Partly Fixed</option>
+									<option value="Not Fixed">Not Fixed</option>
+								</select>
+							</td>
 						</tr>
 					<?php } ?>
 					</tbody>

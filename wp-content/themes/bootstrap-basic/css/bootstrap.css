@@ -3086,6 +3086,35 @@ a.btn.disabled, fieldset[disabled] a.btn {
     color: #d9534f;
     background-color: #fff; }
 
+.btn-michric {
+  color: #fff;
+  background-color: #90C140;
+  border-color: #82af39; }
+  .btn-michric:focus, .btn-michric.focus {
+    color: #fff;
+    background-color: #749c32;
+    border-color: #3a4f19; }
+  .btn-michric:hover {
+    color: #fff;
+    background-color: #749c32;
+    border-color: #60812a; }
+  .btn-michric:active, .btn-michric.active, .open > .btn-michric.dropdown-toggle {
+    color: #fff;
+    background-color: #749c32;
+    border-color: #60812a; }
+    .btn-michric:active:hover, .btn-michric:active:focus, .btn-michric:active.focus, .btn-michric.active:hover, .btn-michric.active:focus, .btn-michric.active.focus, .open > .btn-michric.dropdown-toggle:hover, .open > .btn-michric.dropdown-toggle:focus, .open > .btn-michric.dropdown-toggle.focus {
+      color: #fff;
+      background-color: #60812a;
+      border-color: #3a4f19; }
+  .btn-michric:active, .btn-michric.active, .open > .btn-michric.dropdown-toggle {
+    background-image: none; }
+  .btn-michric.disabled:hover, .btn-michric.disabled:focus, .btn-michric.disabled.focus, .btn-michric[disabled]:hover, .btn-michric[disabled]:focus, .btn-michric[disabled].focus, fieldset[disabled] .btn-michric:hover, fieldset[disabled] .btn-michric:focus, fieldset[disabled] .btn-michric.focus {
+    background-color: #90C140;
+    border-color: #82af39; }
+  .btn-michric .badge {
+    color: #90C140;
+    background-color: #fff; }
+
 .btn-link {
   color: #337ab7;
   font-weight: normal;

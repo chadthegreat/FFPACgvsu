@@ -1,4 +1,12 @@
-[data-task="note-edit"]:hover {
+//tr[data-id] {
+//  td[data-task="note-edit"]:hover {
+//    font-weight: bold;
+//    text-decoration: underline;
+//    cursor: pointer;
+//  }
+//}
+
+.note-edit:hover {
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
