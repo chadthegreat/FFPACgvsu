@@ -1,0 +1,11 @@
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+
+.note-edit:hover {
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer; }
+
+/*# sourceMappingURL=app.css.map */
