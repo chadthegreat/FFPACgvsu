@@ -133,7 +133,6 @@ $(document).ready(
       postcomplaint(room, complaint);
       $('#newcomplainttext').val('');
     });
-    $('[data-task="note-edit"]').on('click', function() { $('#note-edit').modal('show'); });
     $('.remOnLoad').remove();
   }
 );
