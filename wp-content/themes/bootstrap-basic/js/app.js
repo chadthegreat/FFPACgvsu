@@ -127,6 +127,12 @@ $(document).ready(
         }
       }
     });
+    $('#NewComplaint').on('click', function(event) {
+      var room = $('select[name="room"]').val();
+      var complaint = $('#newcomplainttext').val();
+      postcomplaint(room, complaint);
+      $('#newcomplainttext').val('');
+    });
     $('[data-task="note-edit"]').on('click', function() { $('#note-edit').modal('show'); });
     $('.remOnLoad').remove();
   }
