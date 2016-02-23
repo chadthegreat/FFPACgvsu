@@ -60,9 +60,9 @@ get_header();
 				</div>
 				<div class="panel-body">
 					<div class="form-group">
-						<textarea class="form-control"></textarea>
+						<textarea id="newcomplainttext" class="form-control"></textarea>
 					</div>
-					<button class="btn btn-block btn-primary">Submit</button>
+					<button id="NewComplaint" class="btn btn-block btn-primary">Submit</button>
 				</div>
 			</div>
 		</div>
