@@ -5,14 +5,19 @@
  * @author: Chris Schaefer
  */
 include_once ABSPATH . "Application/includes/initialize.php";
-$data["campus"] = array("ALL"=>"Allendale","PEW"=>"Pew");
-$data["building"] = array("CHS"=>"Cook-DeVos Center for Health Sciences",
-	"DEV"=>"DeVos Hall",
-	"EHC"=>"Eberhard Center",
-	"KEL"=>"KEL?",
-	"KEN"=>"Kennedy Hall",
-	"SCB"=>"L. William Seidman Center");
-$data["room"] = array("2315"=>"2315");
+$campus = new campusArray();
+$campus->load();
+$data["campus"] = $campus->getArrayKeyValue();
+$data["building"] = array();
+$data["room"] = array();
+if(isset($_SESSION["APP"]["campus"])) {
+	$building = new buildingArray();
+	$data["building"] = $building->loadByCampus($_SESSION["APP"]["campus"]);
+	if(isset($_SESSION["APP"]["building"])) {
+		$room = new roomArray();
+		$data["room"] = $room->loadByBuilding($_SESSION["APP"]["building"]);
+	}
+}
 get_header();
 ?>
 <?php while(have_posts()) : the_post(); ?>

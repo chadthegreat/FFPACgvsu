@@ -28,8 +28,14 @@ include_once "BaseDB.php";
 include_once "ArrayClass.php";
 include_once "room.php";
 //$GLOBALS["DB_ADAPTER"]["_dbAdapter"] = new DBCon();
-$room = new roomArray();
-$room->load();
-echo "<pre>";
-print_r($room->getArray());
-echo "</pre>";
+//$room = new roomArray();
+//$room->load();
+//echo "<pre>";
+//print_r($room->getArray());
+//echo "</pre>";
+
+function test_function() {
+	echo "test_function()";
+}
+$var = "test_function";
+$var();

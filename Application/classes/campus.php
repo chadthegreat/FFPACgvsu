@@ -34,6 +34,14 @@ class campusArray extends ArrayClass {
 		}
 		return $tmp;
 	}
+
+	function toOptionList() {
+		$tmp = array();
+		foreach($this->_arrObjects as $object) {
+			$tmp[] = array("value" => $object->getID(), "label" => $object->getName());
+		}
+		return $tmp;
+	}
 }
 
 class campus extends BaseDB {
@@ -51,6 +59,10 @@ class campus extends BaseDB {
 
 	protected $columns = array("ID", "Name", "Address");
 	protected $db;
+
+	public function getColumns() {
+		return $this->columns;
+	}
 
 	public function __construct($id=null) {
 		if(!isset($GLOBALS["DB_ADAPTER"])) {

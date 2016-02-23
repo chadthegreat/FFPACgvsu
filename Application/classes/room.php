@@ -49,6 +49,23 @@ class roomArray extends ArrayClass {
 		return $tmp;
 	}
 
+	function toOptionList($BuildingID) {
+		$strSQL = $this->db->SStatement(array(), self::getClass(), array("BuildingID" => $BuildingID));
+		$this->db->SetQueryStmt($strSQL);
+		if($this->db->Query()) {
+			$rooms = array();
+			foreach ($this->db->GetAll() as $row) {
+				$rooms[$row["ID"]] = new room();
+				$rooms[$row["ID"]]->setVarsFromRow($row);
+			}
+		}
+		$tmp = array();
+		foreach($rooms as $object) {
+			$tmp[] = array("value" => $object->getID(), "label" => $object->getRoomNumber());
+		}
+		return $tmp;
+	}
+
 }
 
 class room extends BaseDB {

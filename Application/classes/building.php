@@ -49,6 +49,22 @@ class buildingArray extends ArrayClass {
 		return $tmp;
 	}
 
+	function toOptionList($CampusID) {
+		$strSQL = $this->db->SStatement(array(), self::getClass(), array("CampusID" => $CampusID));
+		$this->db->SetQueryStmt($strSQL);
+		if($this->db->Query()) {
+			$buildings = array();
+			foreach ($this->db->GetAll() as $row) {
+				$buildings[$row["ID"]] = new building();
+				$buildings[$row["ID"]]->setVarsFromRow($row);
+			}
+		}
+		$tmp = array();
+		foreach($buildings as $object) {
+			$tmp[] = array("value" => $object->getID(), "label" => $object->getName());
+		}
+		return $tmp;
+	}
 }
 
 class building extends BaseDB {

@@ -19,6 +19,55 @@ var validateselection = function (form) {
   return true;
 };
 
+var populate_dropdown = function(selector, data) {
+  $(selector).find("option:gt(0)").remove();
+  $.each(data, function() {
+    $(selector).append($('<option />').attr('value', this.value).text(this.label));
+  });
+};
+
+var loadcampus = function () {
+  var url = urlPrefix + root_dir + 'Application/ajax/room.php';
+  var data = { func: 'getCampuss'};
+  jQuery.ajax({
+    url: url, data: data, type: "GET", dataType: "json",
+    success: function(data) {
+      populate_dropdown('select[name="campus"]', data);
+    },
+    error: function( xhr, status, errorThrown ) {
+      Error_Output(xhr, status, errorThrown);
+    }
+  });
+};
+
+var loadbuilding = function (campus) {
+  var url = urlPrefix + root_dir + 'Application/ajax/room.php';
+  var data = { func: 'getBuildings', parm: campus };
+  jQuery.ajax({
+    url: url, data: data, type: "GET", dataType: "json",
+    success: function(data) {
+      populate_dropdown('select[name="building"]', data);
+    },
+    error: function( xhr, status, errorThrown ) {
+      Error_Output(xhr, status, errorThrown);
+    }
+  });
+};
+
+var loadroom = function (building) {
+  var url = urlPrefix + root_dir + 'Application/ajax/room.php';
+  var data = { func: 'getRooms', parm: building };
+  jQuery.ajax({
+    url: url, data: data, type: "GET", dataType: "json",
+    success: function(data) {
+      populate_dropdown('select[name="room"]', data);
+    },
+    error: function( xhr, status, errorThrown ) {
+      Error_Output(xhr, status, errorThrown);
+    }
+  });
+};
+
 $(document).ready(
   function() {
     $('form[name="room-select"] select[name="campus"]').on('change', function () {
@@ -27,6 +76,7 @@ $(document).ready(
         $('form[name="room-select"] select[name="room"]').val('').attr('disabled', '');
         $('form[name="room-select"] input[name="submit"]').attr('disabled', '');
       } else {
+        loadbuilding(this.value);
         $('form[name="room-select"] select[name="building"]').removeAttr('disabled');
       }
     });
@@ -34,6 +84,7 @@ $(document).ready(
       if (this.value == "") {
         $('form[name="room-select"] select[name="room"]').val('').attr('disabled', '');
       } else {
+        loadroom(this.value);
         $('form[name="room-select"] select[name="room"]').removeAttr('disabled');
       }
     });
