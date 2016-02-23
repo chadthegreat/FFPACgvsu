@@ -73,12 +73,12 @@ $(document).ready(
     $('form[name="room-select"] select[name="campus"]').on('change', function () {
       if (this.value == "") {
         $('form[name="room-select"] select[name="building"]').val('').attr('disabled', '');
-        $('form[name="room-select"] select[name="room"]').val('').attr('disabled', '');
-        $('form[name="room-select"] input[name="submit"]').attr('disabled', '');
       } else {
         loadbuilding(this.value);
         $('form[name="room-select"] select[name="building"]').removeAttr('disabled');
       }
+      $('form[name="room-select"] select[name="room"]').val('').attr('disabled', '');
+      $('form[name="room-select"] input[name="submit"]').attr('disabled', '');
     });
     $('form[name="room-select"] select[name="building"]').on('change', function () {
       if (this.value == "") {
