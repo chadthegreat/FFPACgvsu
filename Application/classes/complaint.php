@@ -47,16 +47,19 @@ class complaint extends BaseDB {
 	protected $_RoomID;
 	protected $_Complaint;
 	protected $_Status;
+	protected $_InsertedOn;
 
 	public function getID() { return $this->_ID; }
 	public function getRoomID() { return $this->_RoomID; }
 	public function getComplaint() { return $this->_Complaint; }
 	public function getStatus() { return $this->_Status; }
+	public function getInsertedOn() { return $this->_InsertedOn; }
 
 	public function setID($value) { $this->_ID = $value; }
 	public function setRoomID($value) { $this->_RoomID = $value; }
 	public function setComplaint($value) { $this->_Complaint = $value; }
 	public function setStatus($value) { $this->_Status = $value; }
+	public function setInsertedOn($value) { $this->_InsertedOn = $value; }
 
 	protected $columns = array("ID", "RoomID", "Complaint");
 	protected $db;
@@ -83,6 +86,7 @@ class complaint extends BaseDB {
 	}
 
 	private function insert() {
+		$this->setInsertedOn(time());
 		$strSQL = $this->db->IStatement(get_class($this),self::prepare_data());
 		$this->db->setQueryStmt($strSQL);
 		if($this->db->Query()) {
