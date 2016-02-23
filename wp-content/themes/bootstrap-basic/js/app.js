@@ -82,6 +82,21 @@ var loadcomplaint = function (room) {
   });
 };
 
+function loadnote(complaint) {
+  var url = urlPrefix + root_dir + 'Application/ajax/get.php';
+  var data = { func: 'getNotes', parm: complaint };
+  jQuery.ajax({
+    url: url, data: data, type: "GET", dataType: "html",
+    success: function(data) {
+      $('#note-edit.modal .modal-body').html(data);
+      $('#note-edit').modal('show');
+    },
+    error: function( xhr, status, errorThrown ) {
+      Error_Output(xhr, status, errorThrown);
+    }
+  });
+}
+
 var postcomplaint = function (room, complaint) {
   var url = urlPrefix + root_dir + 'Application/ajax/post.php';
   var data = { func: 'insertComplaint', parm: { room: room, complaint: complaint } };
@@ -95,6 +110,21 @@ var postcomplaint = function (room, complaint) {
     }
   });
 };
+
+var postnote = function(form) {
+  var url = urlPrefix + root_dir + 'Application/ajax/post.php';
+  var data = { func: 'insertNote', parm: { ComplaintID: form.ComplaintID.value, Note: form.Note.value } };
+  jQuery.ajax({
+    url: url, data: data, type: "POST", dataType: "html",
+    success: function(data) {
+      $('#note-edit.modal').modal('hide');
+    },
+    error: function( xhr, status, errorThrown ) {
+      console.dir(xhr, status, errorThrown);
+    }
+  });
+  return false;
+}
 
 $(document).ready(
   function() {

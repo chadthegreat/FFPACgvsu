@@ -27,13 +27,13 @@ class noteArray extends ArrayClass {
 		}
 	}
 
-	function loadByBuilding($BuildingID) {
-		$strSQL = $this->db->SStatement(array(), self::getClass(), array("BuildingID" => $BuildingID));
+	function loadByComplaint($ComplaintID) {
+		$strSQL = $this->db->SStatement(array(), self::getClass(), array("ComplaintID" => $ComplaintID));
 		$this->db->SetQueryStmt($strSQL);
 		if($this->db->Query()) {
 			$tmp = array();
 			foreach ($this->db->GetAll() as $row) {
-				$tmp[$row["ID"]] = $row["RoomNumber"];
+				$tmp[] = array("ID" => $row["ID"], "Note"=>$row["Note"]);
 			}
 			return $tmp;
 		} else {
@@ -72,14 +72,17 @@ class note extends BaseDB {
 	protected $_ID;
 	protected $_ComplaintID;
 	protected $_Note;
+	protected $_InsertedOn;
 
 	public function getID() { return $this->_ID; }
 	public function getComplaintID() { return $this->_ComplaintID; }
 	public function getNote() { return $this->_Note; }
+	public function getInsertedOn() { return $this->_InsertedOn; }
 
 	public function setID($value) { $this->_ID = $value; }
 	public function setComplaintID($value) { $this->_ComplaintID = $value; }
 	public function setNote($value) { $this->_Note = $value; }
+	public function setInsertedOn($value) { $this->_InsertedOn = $value; }
 
 	protected $columns = array("ID", "ComplaintID", "Note");
 	protected $db;
@@ -106,11 +109,12 @@ class note extends BaseDB {
 	}
 
 	private function insert() {
+		$this->setInsertedOn(time());
 		$strSQL = $this->db->IStatement(get_class($this),self::prepare_data());
 		$this->db->setQueryStmt($strSQL);
 		if($this->db->Query()) {
-			$this->_id = $this->db->GetLastInsertedId();
-			return $this->_id;
+			$this->_ID = $this->db->GetLastInsertedId();
+			return $this->_ID;
 		} else {
 			return false;
 		}
@@ -130,11 +134,9 @@ class note extends BaseDB {
 	}
 
 	public function save() {
-		$this->setLastModified(base::now());
-		if($this->_id) {
+		if($this->_ID) {
 			return self::update();
 		} else {
-			$this->setDateAdded(base::now());
 			return self::insert();
 		}
 	}

@@ -20,6 +20,16 @@ function insertComplaint($parm) {
 	$complaint->save();
 }
 
+function insertNote($parm) {
+	if(!is_array($parm)) die("Something went wrong, please try again!");
+	$pComplaintID = $parm["ComplaintID"];
+	$pNote = $parm["Note"];
+	$note = new note();
+	$note->setComplaintID($pComplaintID);
+	$note->setNote($pNote);
+	$note->save();
+}
+
 if(isset($_REQUEST["func"]) && !empty($_REQUEST["func"])) {
 	$function = $_REQUEST["func"];
 } else {

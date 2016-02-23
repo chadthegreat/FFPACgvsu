@@ -29,4 +29,11 @@ $complaint_status = array("Fixed", "Partly Fixed", "Not Fixed");
 	<?php } ?>
 	</tbody>
 </table>
-<script class="remOnLoad">$('[data-task="note-edit"]').on('click', function() { $('#note-edit').modal('show'); });$('.remOnLoad').remove();</script>
+<script class="remOnLoad">
+	$('[data-task="note-edit"]').on('click',
+		function() {
+			var complaintID = $(this).parent('[data-id]').data('id');
+			loadnote(complaintID);
+		});
+	$('.remOnLoad').remove();
+</script>
