@@ -1,5 +1,5 @@
 <?php
-$complaint_status = array("Fixed", "Partly Fixed", "Not Fixed")
+$complaint_status = array("Fixed", "Partly Fixed", "Not Fixed");
 ?>
 <table class="table">
 	<thead>
