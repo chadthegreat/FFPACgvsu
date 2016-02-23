@@ -68,7 +68,7 @@ get_header();
 						<tr data-id="">
 							<td>Complaint information here</td>
 							<td data-task="note-edit" class="note-edit">Notes here</td>
-							<td width="10%">
+							<td width="20%">
 								<select name="status" class="form-control">
 									<option value="Fixed">Fixed</option>
 									<option value="Partly Fixed">Partly Fixed</option>
