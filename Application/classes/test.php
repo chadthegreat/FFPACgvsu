@@ -31,5 +31,5 @@ include_once "complaint.php";
 $complaint = new complaintArray();
 $complaint->load();
 echo "<pre>";
-print_r($complaint->getArray());
+print_r($complaint->loadByRoom(1));
 echo "</pre>";

@@ -66,30 +66,15 @@ get_header();
 				</div>
 			<?php }
 			?>
-			<table class="table">
-				<thead>
-				<tr>
-					<th>Complaint</th>
-					<th>Notes</th>
-					<th>Status</th>
-				</tr>
-				</thead>
-				<tbody>
-				<?php for ($i = 0; $i < 5; $i++) { ?>
-					<tr data-id="">
-						<td>Complaint information here</td>
-						<td data-task="note-edit" class="note-edit">Notes here</td>
-						<td width="20%">
-							<select name="status" class="form-control">
-								<option value="Fixed">Fixed</option>
-								<option value="Partly Fixed">Partly Fixed</option>
-								<option value="Not Fixed">Not Fixed</option>
-							</select>
-						</td>
-					</tr>
-				<?php } ?>
-				</tbody>
-			</table>
+			<div id="complaints">
+				<?php
+				if(isset($_SESSION["APP"]["room"]) && !empty($_SESSION["APP"]["room"])) {
+					$complaints = new complaintArray();
+					$data = $complaints->loadByRoom($_SESSION["APP"]["room"]);
+					include_once ABSPATH . '/Application/templates/complaints.php';
+				}
+				?>
+			</div>
 <?php } else { ?>
 			<h1 class="page-title">Please select a room</h1>
 			<a href="/room-select">Click here to select a room</a>

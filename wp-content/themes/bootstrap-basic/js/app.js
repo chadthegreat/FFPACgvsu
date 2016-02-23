@@ -27,7 +27,7 @@ var populate_dropdown = function(selector, data) {
 };
 
 var loadcampus = function () {
-  var url = urlPrefix + root_dir + 'Application/ajax/room.php';
+  var url = urlPrefix + root_dir + 'Application/ajax/get.php';
   var data = { func: 'getCampuss'};
   jQuery.ajax({
     url: url, data: data, type: "GET", dataType: "json",
@@ -41,7 +41,7 @@ var loadcampus = function () {
 };
 
 var loadbuilding = function (campus) {
-  var url = urlPrefix + root_dir + 'Application/ajax/room.php';
+  var url = urlPrefix + root_dir + 'Application/ajax/get.php';
   var data = { func: 'getBuildings', parm: campus };
   jQuery.ajax({
     url: url, data: data, type: "GET", dataType: "json",
@@ -55,12 +55,40 @@ var loadbuilding = function (campus) {
 };
 
 var loadroom = function (building) {
-  var url = urlPrefix + root_dir + 'Application/ajax/room.php';
+  var url = urlPrefix + root_dir + 'Application/ajax/get.php';
   var data = { func: 'getRooms', parm: building };
   jQuery.ajax({
     url: url, data: data, type: "GET", dataType: "json",
     success: function(data) {
       populate_dropdown('select[name="room"]', data);
+    },
+    error: function( xhr, status, errorThrown ) {
+      Error_Output(xhr, status, errorThrown);
+    }
+  });
+};
+
+var loadcomplaint = function (room) {
+  var url = urlPrefix + root_dir + 'Application/ajax/get.php';
+  var data = { func: 'getComplaints', parm: room };
+  jQuery.ajax({
+    url: url, data: data, type: "GET", dataType: "html",
+    success: function(data) {
+      $('#complaints').html(data);
+    },
+    error: function( xhr, status, errorThrown ) {
+      Error_Output(xhr, status, errorThrown);
+    }
+  });
+};
+
+var postcomplaint = function (room, complaint) {
+  var url = urlPrefix + root_dir + 'Application/ajax/post.php';
+  var data = { func: 'insertComplaint', parm: { room: room, complaint: complaint } };
+  jQuery.ajax({
+    url: url, data: data, type: "POST", dataType: "html",
+    success: function(data) {
+      loadcomplaint(room);
     },
     error: function( xhr, status, errorThrown ) {
       Error_Output(xhr, status, errorThrown);
@@ -89,10 +117,14 @@ $(document).ready(
       }
     });
     $('form[name="room-select"] select[name="room"]').on('change', function () {
+      $('#complaints').html('');
       if (this.value == "") {
         $('form[name="room-select"] input[name="submit"]').attr('disabled', '');
       } else {
         $('form[name="room-select"] input[name="submit"]').removeAttr('disabled', '');
+        if($('#complaints').length > 0) {
+          loadcomplaint(this.value);
+        }
       }
     });
     $('[data-task="note-edit"]').on('click', function() { $('#note-edit').modal('show'); });

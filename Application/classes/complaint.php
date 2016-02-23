@@ -27,59 +27,36 @@ class complaintArray extends ArrayClass {
 		}
 	}
 
-	function loadByBuilding($BuildingID) {
-		$strSQL = $this->db->SStatement(array(), self::getClass(), array("BuildingID" => $BuildingID));
+	function loadByRoom($RoomID) {
+		$strSQL = $this->db->SStatement(array(), self::getClass(), array("RoomID" => $RoomID));
 		$this->db->SetQueryStmt($strSQL);
 		if($this->db->Query()) {
 			$tmp = array();
 			foreach ($this->db->GetAll() as $row) {
-				$tmp[$row["ID"]] = $row["RoomNumber"];
+				$tmp[] = array("ID"=>$row["ID"], "Complaint"=>$row["Complaint"], "Status"=>$row["Status"]);
 			}
 			return $tmp;
 		} else {
 			return false;
 		}
 	}
-
-	function getArrayKeyValue() {
-		$tmp = array();
-		foreach($this->_arrObjects as $object) {
-			$tmp[$object->getID()] = $object->getRoomNumber();
-		}
-		return $tmp;
-	}
-
-	function toOptionList($BuildingID) {
-		$strSQL = $this->db->SStatement(array(), self::getClass(), array("BuildingID" => $BuildingID));
-		$this->db->SetQueryStmt($strSQL);
-		if($this->db->Query()) {
-			$rooms = array();
-			foreach ($this->db->GetAll() as $row) {
-				$rooms[$row["ID"]] = new room();
-				$rooms[$row["ID"]]->setVarsFromRow($row);
-			}
-		}
-		$tmp = array();
-		foreach($rooms as $object) {
-			$tmp[] = array("value" => $object->getID(), "label" => $object->getRoomNumber());
-		}
-		return $tmp;
-	}
-
 }
 
 class complaint extends BaseDB {
 	protected $_ID;
 	protected $_RoomID;
 	protected $_Complaint;
+	protected $_Status;
 
 	public function getID() { return $this->_ID; }
 	public function getRoomID() { return $this->_RoomID; }
 	public function getComplaint() { return $this->_Complaint; }
+	public function getStatus() { return $this->_Status; }
 
 	public function setID($value) { $this->_ID = $value; }
 	public function setRoomID($value) { $this->_RoomID = $value; }
 	public function setComplaint($value) { $this->_Complaint = $value; }
+	public function setStatus($value) { $this->_Status = $value; }
 
 	protected $columns = array("ID", "RoomID", "Complaint");
 	protected $db;
@@ -130,11 +107,9 @@ class complaint extends BaseDB {
 	}
 
 	public function save() {
-		$this->setLastModified(base::now());
-		if($this->_id) {
+		if($this->_ID) {
 			return self::update();
 		} else {
-			$this->setDateAdded(base::now());
 			return self::insert();
 		}
 	}

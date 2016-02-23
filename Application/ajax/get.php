@@ -27,6 +27,13 @@ function getRooms($building = null) {
 	return json_encode($rooms->toOptionList($building));
 }
 
+function getComplaints($room = null) {
+	if($room == null) die();
+	$complaint = new complaintArray();
+	$data = $complaint->loadByRoom($room);
+	include_once APP_PATH . 'templates/complaints.php';
+}
+
 if(isset($_REQUEST["func"]) && !empty($_REQUEST["func"])) {
 	$function = $_REQUEST["func"];
 } else {
