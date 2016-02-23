@@ -26,16 +26,10 @@ define('DB_COLLATE', '');
 include_once "DBCon.php";
 include_once "BaseDB.php";
 include_once "ArrayClass.php";
-include_once "room.php";
-//$GLOBALS["DB_ADAPTER"]["_dbAdapter"] = new DBCon();
-//$room = new roomArray();
-//$room->load();
-//echo "<pre>";
-//print_r($room->getArray());
-//echo "</pre>";
+include_once "complaint.php";
 
-function test_function() {
-	echo "test_function()";
-}
-$var = "test_function";
-$var();
+$complaint = new complaintArray();
+$complaint->load();
+echo "<pre>";
+print_r($complaint->getArray());
+echo "</pre>";
