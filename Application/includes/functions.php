@@ -20,3 +20,22 @@ function output_select($options, $selected = null) {
 		}
 	}
 }
+
+function loadClass($class) {
+	if (file_exists(ABSPATH . 'classes/'.$class.'.php')) { // Load class
+		include ABSPATH . "classes/$class.php";
+	} else if(strpos($class,"Array")) {
+		$class = substr($class,0,strpos($class, "Array"));
+		if(file_exists(ABSPATH . "classes/$class.php"))
+			include ABSPATH . "classes/$class.php";
+	} else if(strpos($class,"TS") === 0) { // Load core
+		if(file_exists(ABSPATH . "include/core/$class.php")) {
+			include ABSPATH . "include/core/$class.php";
+		}
+	} else {
+		echo "<pre>";
+		throw new Exception("Unable to load class: $class");
+		echo "</pre>";
+	}
+}
+spl_autoload_register('loadClass');

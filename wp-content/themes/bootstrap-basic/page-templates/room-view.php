@@ -19,12 +19,27 @@ if(isset($_REQUEST["campus"])) {
 		}
 	}
 }
+$campus = new campusArray();
+$campus->load();
+$data["campus"] = $campus->getArrayKeyValue();
+$data["building"] = array();
+$data["room"] = array();
+if(isset($_SESSION["APP"]["campus"])) {
+	$building = new buildingArray();
+	$building->load();
+	$data["building"] = $building->loadByCampus($_SESSION["APP"]["campus"]);
+	if(isset($_SESSION["APP"]["building"])) {
+		$room = new roomArray();
+		$room->load();
+		$data["room"] = $room->loadByBuilding($_SESSION["APP"]["building"]);
+	}
+}
 get_header();
 // Todo: query database for labels of campus/building/room for .page-title
 	while (have_posts()) : the_post(); ?>
 		<div class="container" id="home-content">
 <?php if(isset($_SESSION["APP"]["campus"]) && isset($_SESSION["APP"]["building"]) && isset($_SESSION["APP"]["room"])) { ?>
-			<h1 class="page-title">Campus > Building > Room</h1>
+			<h1 class="page-title"><?php echo $campus->getArrayKeyValue()[$_SESSION["APP"]["campus"]]; ?> > <?php echo $building->getArrayKeyValue()[$_SESSION["APP"]["building"]]; ?> > <?php echo $room->getArrayKeyValue()[$_SESSION["APP"]["room"]]; ?></h1>
 			<?php the_content(); ?>
 			<?php
 			if (isset($debug) && ($debug == true)) { ?>

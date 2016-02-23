@@ -1,25 +1,22 @@
 <?php
 /*
- * Template Name: Room Select
+ * Template Name: Room Maintenance
  *
  * @Author:	Chris Schaefer
  *
 */
 include_once ABSPATH . "Application/includes/initialize.php";
+
 // ToDo: After we have the data we will need to load campus and then update the onchange to call an ajax script to load building and same for building -> room.
-$campus = new campusArray();
-$campus->load();
-$data["campus"] = $campus->getArrayKeyValue();
-$data["building"] = array();
-$data["room"] = array();
-if(isset($_SESSION["APP"]["campus"])) {
-	$building = new buildingArray();
-	$data["building"] = $building->loadByCampus($_SESSION["APP"]["campus"]);
-	if(isset($_SESSION["APP"]["building"])) {
-		$room = new roomArray();
-		$data["room"] = $room->loadByBuilding($_SESSION["APP"]["building"]);
-	}
-}
+
+$data["campus"] = array("ALL"=>"Allendale","PEW"=>"Pew");
+$data["building"] = array("CHS"=>"Cook-DeVos Center for Health Sciences",
+	"DEV"=>"DeVos Hall",
+	"EHC"=>"Eberhard Center",
+	"KEL"=>"KEL?",
+	"KEN"=>"Kennedy Hall",
+	"SCB"=>"L. William Seidman Center");
+$data["room"] = array("2315"=>"2315");
 get_header();
 ?>
 <?php while(have_posts()) : the_post(); ?>
@@ -37,13 +34,13 @@ get_header();
 					</div>
 					<div class="form-group">
 						<label for="building">Building</label>
-						<select name="building" class="form-control"<?php echo (isset($_SESSION["APP"]["campus"]) ? "" : " disabled"); ?>>
+						<select name="building" class="form-control"<?php echo (isset($_SESSION["APP"]["building"]) ? "" : " disabled"); ?>>
 							<?php output_select($data["building"]); ?>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="room">Room</label>
-						<select name="room" class="form-control"<?php echo (isset($_SESSION["APP"]["building"]) ? "" : " disabled"); ?>>
+						<select name="room" class="form-control"<?php echo (isset($_SESSION["APP"]["room"]) ? "" : " disabled"); ?>>
 							<?php output_select($data["room"]); ?>
 						</select>
 					</div>
@@ -53,7 +50,7 @@ get_header();
 		</form>
 	</div>
 	<script class="remOnLoad">
-		$('form[name="room-select"] select[name="campus"]').val(<?php echo isset($_SESSION["APP"]["campus"]) ? $_SESSION["APP"]["campus"] : ""; ?>);
+		$('form[name="room-select"] select[name="campus"]').val('<?php echo isset($_SESSION["APP"]["campus"]) ? $_SESSION["APP"]["campus"] : ""; ?>');
 		$('form[name="room-select"] select[name="building"]').val('<?php echo isset($_SESSION["APP"]["building"]) ? $_SESSION["APP"]["building"] : ""; ?>');
 		$('form[name="room-select"] select[name="room"]').val('<?php echo isset($_SESSION["APP"]["room"]) ? $_SESSION["APP"]["room"] : ""; ?>');
 	</script>
