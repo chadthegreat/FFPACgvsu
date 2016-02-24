@@ -13,7 +13,7 @@ $complaint_status = array("Fixed", "Partly Fixed", "Not Fixed");
 	<?php foreach($data as $row) { ?>
 		<tr data-id="<?php echo $row["ID"]; ?>">
 			<td><?php echo $row["Complaint"]; ?></td>
-			<td data-task="note-edit" class="note-edit">Click to view notes</td>
+			<td data-task="note-edit" class="note-edit">Click to view notes<?php echo ($row["note_count"] > 0) ? " ({$row["note_count"]})" : ""; ?></td>
 			<td width="20%">
 				<select name="status" class="form-control">
 					<?php
