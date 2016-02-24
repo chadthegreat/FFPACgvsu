@@ -10,6 +10,8 @@ footer {
 
 #complaints table tbody tr td:not(:last-child) {
   line-height: 35px; }
+#complaints table tbody tr td select[name="status"] {
+  min-width: 150px; }
 
 #notes table tbody tr td button.close {
   color: #f00;

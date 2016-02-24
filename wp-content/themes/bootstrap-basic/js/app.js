@@ -144,7 +144,7 @@ var poststatus = function(complaintID, status, target) {
     error: function( xhr, status, errorThrown ) {
       $(target).removeClass('alert-warning');
       $(target).addClass('alert-danger');
-      toastr["success"]("Status could not be updated");
+      toastr["error"]("Status could not be updated");
       console.dir(xhr, status, errorThrown);
     }
   });
@@ -158,8 +158,10 @@ var deletenote = function(noteid, target) {
     url: url, data: data, type: "POST", dataType: "html",
     success: function(data) {
       $(target).parents('tr[data-note-id]').remove();
+      toastr["success"]("Note deleted successfully");
     },
     error: function( xhr, status, errorThrown ) {
+      toastr["error"]("Status could not be updated");
       console.dir(xhr, status, errorThrown);
     }
   });
