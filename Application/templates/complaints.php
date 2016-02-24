@@ -31,9 +31,16 @@ $complaint_status = array("Fixed", "Partly Fixed", "Not Fixed");
 </table>
 <script class="remOnLoad">
 	$('[data-task="note-edit"]').on('click',
-		function() {
+		function(event) {
 			var complaintID = $(this).parent('[data-id]').data('id');
 			loadnote(complaintID);
+		});
+	$('select[name="status"]').on('change',
+		function(event) {
+			$(this).addClass('alert-warning');
+			var complaintID = $(this).parents('[data-id]').data('id');
+			var status = $(this).val();
+			poststatus(complaintID, status, this);
 		});
 	$('.remOnLoad').remove();
 </script>

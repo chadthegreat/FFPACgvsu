@@ -61,7 +61,7 @@ class complaint extends BaseDB {
 	public function setStatus($value) { $this->_Status = $value; }
 	public function setInsertedOn($value) { $this->_InsertedOn = $value; }
 
-	protected $columns = array("ID", "RoomID", "Complaint");
+	protected $columns = array("ID", "RoomID", "Complaint", "Status");
 	protected $db;
 
 	public function __construct($id=null) {

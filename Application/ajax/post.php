@@ -30,6 +30,15 @@ function insertNote($parm) {
 	$note->save();
 }
 
+function updateStatus($parm) {
+	if(!is_array($parm)) die("Something went wrong please try again!");
+	$pComplaintID = $parm["ComplaintID"];
+	$pStatus = $parm["status"];
+	$complaint = new complaint($pComplaintID);
+	$complaint->setStatus($pStatus);
+	$complaint->save();
+}
+
 if(isset($_REQUEST["func"]) && !empty($_REQUEST["func"])) {
 	$function = $_REQUEST["func"];
 } else {

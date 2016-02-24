@@ -124,7 +124,25 @@ var postnote = function(form) {
     }
   });
   return false;
-}
+};
+
+var poststatus = function(complaintID, status, target) {
+  var url = urlPrefix + root_dir + 'Application/ajax/post.php';
+  var data = { func: 'updateStatus', parm: { ComplaintID: complaintID, status: status } };
+  jQuery.ajax({
+    url: url, data: data, type: "POST", dataType: "html",
+    success: function(data) {
+      $('#note-edit.modal').modal('hide');
+      $(target).removeClass('alert-warning');
+    },
+    error: function( xhr, status, errorThrown ) {
+      $(target).removeClass('alert-warning');
+      $(target).addClass('alert-danger');
+      console.dir(xhr, status, errorThrown);
+    }
+  });
+  return false;
+};
 
 $(document).ready(
   function() {
