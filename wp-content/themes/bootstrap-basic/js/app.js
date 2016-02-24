@@ -112,6 +112,7 @@ var postcomplaint = function (room, complaint) {
 };
 
 var postnote = function(form) {
+  if(form.Note.value.trim() == "") { alert("You must enter a note"); return false; }
   var url = urlPrefix + root_dir + 'Application/ajax/post.php';
   var data = { func: 'insertNote', parm: { ComplaintID: form.ComplaintID.value, Note: form.Note.value } };
   jQuery.ajax({

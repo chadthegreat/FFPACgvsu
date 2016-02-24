@@ -28,7 +28,7 @@
 			<label for="note">Add a note:</label>
 			<input type="text" class="form-control" name="Note" placeholder="Note">
 		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn btn-primary btn-block">Submit</button>
 	</form>
 </div>
 <script class="remOnLoad">

@@ -11,4 +11,10 @@ footer {
 #complaints table tbody tr td:not(:last-child) {
   line-height: 35px; }
 
+#notes table tbody tr td button.close {
+  color: #f00;
+  opacity: 0.5; }
+  #notes table tbody tr td button.close:hover {
+    opacity: 1.0; }
+
 /*# sourceMappingURL=app.css.map */

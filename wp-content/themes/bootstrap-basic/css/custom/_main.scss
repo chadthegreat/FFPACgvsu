@@ -25,3 +25,21 @@
     }
   }
 }
+
+#notes {
+  table {
+    tbody {
+      tr {
+        td {
+          button.close {
+            color: #f00;
+            opacity: 0.5;
+            &:hover {
+              opacity: 1.0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
