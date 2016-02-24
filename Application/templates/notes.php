@@ -1,6 +1,6 @@
-<div id="notes">
+<div id="notes" class="table-responsive">
 	<?php if(count($data) > 0) { ?>
-	<table class="table table-condensed table-responsive">
+	<table class="table table-condensed">
 		<thead>
 		<tr>
 			<th>Notes</th>

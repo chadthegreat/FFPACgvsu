@@ -1,7 +1,7 @@
 <?php
 $complaint_status = array("Fixed", "Partly Fixed", "Not Fixed");
 ?>
-<table class="table table-condensed table-responsive">
+<table class="table table-condensed">
 	<thead>
 	<tr>
 		<th>Complaint</th>

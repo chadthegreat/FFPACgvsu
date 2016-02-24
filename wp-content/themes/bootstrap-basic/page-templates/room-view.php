@@ -66,7 +66,7 @@ get_header();
 				</div>
 			<?php }
 			?>
-			<div id="complaints">
+			<div id="complaints" class="table-responsive">
 				<?php
 				if(isset($_SESSION["APP"]["room"]) && !empty($_SESSION["APP"]["room"])) {
 					$complaints = new complaintArray();
