@@ -49,7 +49,7 @@ get_header();
 					</div>
 					<div class="panel-body">
 						<label>$_REQUEST Variables</label>
-						<table class="table">
+						<table class="table table-condensed table-responsive">
 							<thead>
 							<tr>
 								<th>Key</th>

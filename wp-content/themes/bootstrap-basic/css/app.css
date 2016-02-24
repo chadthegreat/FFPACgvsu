@@ -8,4 +8,7 @@ footer {
   text-decoration: underline;
   cursor: pointer; }
 
+#complaints table tbody tr td:not(:last-child) {
+  line-height: 35px; }
+
 /*# sourceMappingURL=app.css.map */

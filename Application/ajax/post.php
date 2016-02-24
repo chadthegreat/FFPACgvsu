@@ -10,7 +10,6 @@ include_once dirname(APP_PATH) . '/wp-config.php';
 include_once APP_PATH . 'includes/initialize.php';
 
 function insertComplaint($parm) {
-	if(!is_array($parm)) die("Something went wrong, please try again!");
 	$pRoom = $parm["room"];
 	$pComplaint = $parm["complaint"];
 	$complaint = new complaint();
@@ -21,7 +20,6 @@ function insertComplaint($parm) {
 }
 
 function insertNote($parm) {
-	if(!is_array($parm)) die("Something went wrong, please try again!");
 	$pComplaintID = $parm["ComplaintID"];
 	$pNote = $parm["Note"];
 	$note = new note();
@@ -30,8 +28,13 @@ function insertNote($parm) {
 	$note->save();
 }
 
+function deleteNote($parm) {
+	$pNoteID = $parm["NoteID"];
+	$note = new note($pNoteID);
+	$note->delete();
+}
+
 function updateStatus($parm) {
-	if(!is_array($parm)) die("Something went wrong please try again!");
 	$pComplaintID = $parm["ComplaintID"];
 	$pStatus = $parm["status"];
 	$complaint = new complaint($pComplaintID);
@@ -49,5 +52,7 @@ if(isset($_REQUEST["parm"]) && !empty($_REQUEST["parm"])) {
 } else {
 	$parameter = null;
 }
+
+if(!is_array($parameter)) die("Something went wrong, please try again!");
 
 echo $function($parameter);

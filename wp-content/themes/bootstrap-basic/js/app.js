@@ -144,6 +144,21 @@ var poststatus = function(complaintID, status, target) {
   return false;
 };
 
+var deletenote = function(noteid, target) {
+  var url = urlPrefix + root_dir + 'Application/ajax/post.php';
+  var data = { func: 'deleteNote', parm: { NoteID: noteid } };
+  jQuery.ajax({
+    url: url, data: data, type: "POST", dataType: "html",
+    success: function(data) {
+      $(target).parents('tr[data-note-id]').remove();
+    },
+    error: function( xhr, status, errorThrown ) {
+      console.dir(xhr, status, errorThrown);
+    }
+  });
+  return false;
+};
+
 $(document).ready(
   function() {
     $('form[name="room-select"] select[name="campus"]').on('change', function () {

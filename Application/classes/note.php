@@ -100,9 +100,9 @@ class note extends BaseDB {
 	}
 
 	public function delete() {
-		if($this->_id) {
+		if($this->_ID) {
 			$strSQL = "DELETE FROM " . DB_NAME . "." . get_class($this) . "
-				WHERE id = $this->_id";
+				WHERE ID = $this->_ID";
 			$this->db->setQueryStmt($strSQL);
 			return $this->db->Query();
 		}
