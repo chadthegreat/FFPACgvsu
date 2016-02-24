@@ -104,8 +104,10 @@ var postcomplaint = function (room, complaint) {
     url: url, data: data, type: "POST", dataType: "html",
     success: function(data) {
       loadcomplaint(room);
+      toastr["success"]("Complaint added successfully");
     },
     error: function( xhr, status, errorThrown ) {
+      toastr["error"]("Complaint could not be saved");
       Error_Output(xhr, status, errorThrown);
     }
   });
@@ -119,8 +121,10 @@ var postnote = function(form) {
     url: url, data: data, type: "POST", dataType: "html",
     success: function(data) {
       $('#note-edit.modal').modal('hide');
+      toastr["success"]("Note added successfully");
     },
     error: function( xhr, status, errorThrown ) {
+      toastr["error"]("Note could not be saved");
       console.dir(xhr, status, errorThrown);
     }
   });
@@ -135,10 +139,12 @@ var poststatus = function(complaintID, status, target) {
     success: function(data) {
       $('#note-edit.modal').modal('hide');
       $(target).removeClass('alert-warning');
+      toastr["success"]("Status updated successfully");
     },
     error: function( xhr, status, errorThrown ) {
       $(target).removeClass('alert-warning');
       $(target).addClass('alert-danger');
+      toastr["success"]("Status could not be updated");
       console.dir(xhr, status, errorThrown);
     }
   });
