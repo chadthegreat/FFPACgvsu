@@ -5,15 +5,15 @@ var root_dir = '/';
 
 var validateselection = function (form) {
   if (form.campus.value == "") {
-    alert("Please select a campus");
+    toastr["error"]("Please select a campus");
     return false;
   }
   if (form.building.value == "") {
-    alert("Please select a building");
+    toastr["error"]("Please select a building");
     return false;
   }
   if (form.room.value == "") {
-    alert("Please select a room");
+    toastr["error"]("Please select a room");
     return false;
   }
   return true;
@@ -114,7 +114,7 @@ var postcomplaint = function (room, complaint) {
 };
 
 var postnote = function(form) {
-  if(form.Note.value.trim() == "") { alert("You must enter a note"); return false; }
+  if(form.Note.value.trim() == "") { toastr["error"]("You must enter a note"); return false; }
   var url = urlPrefix + root_dir + 'Application/ajax/post.php';
   var data = { func: 'insertNote', parm: { ComplaintID: form.ComplaintID.value, Note: form.Note.value } };
   jQuery.ajax({
