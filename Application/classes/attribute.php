@@ -14,7 +14,7 @@ class attributeArray extends ArrayClass {
 	}
 
 	function load() {
-		$strSQL = $this->db->SStatement(array(), self::getClass());
+		$strSQL = $this->db->SStatement(array(), self::getClass()) . " ORDER BY Description ASC";
 		$this->db->SetQueryStmt($strSQL);
 		if($this->db->Query()) {
 			foreach ($this->db->GetAll() as $row) {
