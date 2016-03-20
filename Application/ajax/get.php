@@ -41,6 +41,15 @@ function getNotes($complaint = null) {
 	$data = $notes->loadByComplaint($complaint);
 	include_once APP_PATH . 'templates/notes.php';
 }
+
+function getAttributes($room = null) {
+	if($room == null) die();
+	$_SESSION["APP"]["room"] = $room;
+	$complaint = new complaintArray();
+	$data = $complaint->loadByRoom($room);
+	include_once APP_PATH . 'templates/attributes.php';
+}
+
 if(isset($_REQUEST["func"]) && !empty($_REQUEST["func"])) {
 	$function = $_REQUEST["func"];
 } else {

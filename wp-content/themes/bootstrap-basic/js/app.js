@@ -82,6 +82,20 @@ var loadcomplaint = function (room) {
   });
 };
 
+var loadattributes = function (room) {
+  var url = urlPrefix + root_dir + 'Application/ajax/get.php';
+  var data = { func: 'getAttributes', parm: room };
+  jQuery.ajax({
+    url: url, data: data, type: "GET", dataType: "html",
+    success: function(data) {
+      $('#attribute_list').html(data);
+    },
+    error: function( xhr, status, errorThrown ) {
+      Error_Output(xhr, status, errorThrown);
+    }
+  });
+};
+
 function loadnote(complaint) {
   var url = urlPrefix + root_dir + 'Application/ajax/get.php';
   var data = { func: 'getNotes', parm: complaint };
@@ -196,6 +210,8 @@ $(document).ready(
         $('form[name="room-select"] input[name="submit"]').removeAttr('disabled', '');
         if($('#complaints').length > 0) {
           loadcomplaint(this.value);
+        } else if($('#attribute_list').length > 0) {
+          loadattributes(this.value);
         }
       }
     });
