@@ -28,8 +28,7 @@ class complaintArray extends ArrayClass {
 	}
 
 	function loadByRoom($RoomID) {
-		$strSQL = $this->db->SStatement(array(), self::getClass(), array("RoomID" => $RoomID));
-		/* TODO: ESCAPE PARM */
+//		$strSQL = $this->db->SStatement(array(), self::getClass(), array("RoomID" => $RoomID));
 		$strSQL = "SELECT *, n.note_count FROM complaint c INNER JOIN
 			(select complaint.ID, COUNT(note.ID) AS note_count from complaint LEFT OUTER JOIN note ON complaint.ID = note.ComplaintID group by complaint.ID) n
 			ON n.ID = c.ID
@@ -38,7 +37,7 @@ class complaintArray extends ArrayClass {
 		if($this->db->Query()) {
 			$tmp = array();
 			foreach ($this->db->GetAll() as $row) {
-				$tmp[] = array("ID"=>$row["ID"], "Complaint"=>$row["Complaint"], "Status"=>$row["Status"], "note_count"=>$row["note_count"]);
+				$tmp[] = array("ID"=>$row["ID"], "Complaint"=>$row["Complaint"], "Status"=>$row["Status"], "note_count"=>$row["note_count"], "InsertedOn" => $row["InsertedOn"]);
 			}
 			return $tmp;
 		} else {

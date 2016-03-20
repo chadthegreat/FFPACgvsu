@@ -7,6 +7,7 @@ $complaint_status = array("Fixed", "Partly Fixed", "Not Fixed");
 		<th>Complaint</th>
 		<th>Notes</th>
 		<th>Status</th>
+		<th>Date</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -25,6 +26,7 @@ $complaint_status = array("Fixed", "Partly Fixed", "Not Fixed");
 					?>
 				</select>
 			</td>
+			<td><?php echo $row["InsertedOn"]; ?></td>
 		</tr>
 	<?php } ?>
 	</tbody>

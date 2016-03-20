@@ -29,6 +29,7 @@ function getRooms($building = null) {
 
 function getComplaints($room = null) {
 	if($room == null) die();
+	$_SESSION["APP"]["room"] = $room;
 	$complaint = new complaintArray();
 	$data = $complaint->loadByRoom($room);
 	include_once APP_PATH . 'templates/complaints.php';
