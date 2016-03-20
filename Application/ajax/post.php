@@ -42,6 +42,14 @@ function updateStatus($parm) {
 	$complaint->save();
 }
 
+function updateLongTerm($parm) {
+	$pComplaintID = $parm["ComplaintID"];
+	$pValue = ($parm["value"] == "true") ? 1 : 0;
+	$complaint = new complaint($pComplaintID);
+	$complaint->setLongTermRenovation($pValue);
+	$complaint->save();
+}
+
 if(isset($_REQUEST["func"]) && !empty($_REQUEST["func"])) {
 	$function = $_REQUEST["func"];
 } else {

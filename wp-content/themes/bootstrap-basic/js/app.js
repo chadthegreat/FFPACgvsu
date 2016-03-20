@@ -165,6 +165,26 @@ var poststatus = function(complaintID, status, target) {
   return false;
 };
 
+var postlongterm = function(complaintID, value, target) {
+  var url = urlPrefix + root_dir + 'Application/ajax/post.php';
+  var data = { func: 'updateLongTerm', parm: { ComplaintID: complaintID, value: value } };
+  jQuery.ajax({
+    url: url, data: data, type: "POST", dataType: "html",
+    success: function(data) {
+      $('#note-edit.modal').modal('hide');
+      $(target).removeClass('alert-warning');
+      toastr["success"]("Status updated successfully");
+    },
+    error: function( xhr, status, errorThrown ) {
+      $(target).removeClass('alert-warning');
+      $(target).addClass('alert-danger');
+      toastr["error"]("Status could not be updated");
+      console.dir(xhr, status, errorThrown);
+    }
+  });
+  return false;
+};
+
 var deletenote = function(noteid, target) {
   var url = urlPrefix + root_dir + 'Application/ajax/post.php';
   var data = { func: 'deleteNote', parm: { NoteID: noteid } };

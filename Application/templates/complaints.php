@@ -7,6 +7,7 @@ $complaint_status = array("Fixed", "Partly Fixed", "Not Fixed");
 		<th>Complaint</th>
 		<th>Notes</th>
 		<th>Status</th>
+		<th>Long Term</th>
 		<th>Date</th>
 	</tr>
 	</thead>
@@ -26,6 +27,9 @@ $complaint_status = array("Fixed", "Partly Fixed", "Not Fixed");
 					?>
 				</select>
 			</td>
+			<td>
+				<input type="checkbox" name="LongTermRenovation" class="form-control" <?php echo ($row["LongTermRenovation"]) ? "checked" : ""; ?> />
+			</td>
 			<td><?php echo $row["InsertedOn"]; ?></td>
 		</tr>
 	<?php } ?>
@@ -39,10 +43,15 @@ $complaint_status = array("Fixed", "Partly Fixed", "Not Fixed");
 		});
 	$('select[name="status"]').on('change',
 		function(event) {
-			$(this).addClass('alert-warning');
 			var complaintID = $(this).parents('[data-id]').data('id');
 			var status = $(this).val();
 			poststatus(complaintID, status, this);
+		});
+	$('input[name="LongTermRenovation"]').on('change',
+		function(event) {
+			var complaintID = $(this).parents('[data-id]').data('id');
+			var value = $(this).is(':checked');
+			postlongterm(complaintID, value, this);
 		});
 	$('.remOnLoad').remove();
 </script>

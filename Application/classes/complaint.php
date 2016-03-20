@@ -37,7 +37,7 @@ class complaintArray extends ArrayClass {
 		if($this->db->Query()) {
 			$tmp = array();
 			foreach ($this->db->GetAll() as $row) {
-				$tmp[] = array("ID"=>$row["ID"], "Complaint"=>$row["Complaint"], "Status"=>$row["Status"], "note_count"=>$row["note_count"], "InsertedOn" => $row["InsertedOn"]);
+				$tmp[] = array("ID"=>$row["ID"], "Complaint"=>$row["Complaint"], "Status"=>$row["Status"], "LongTermRenovation"=>$row["LongTermRenovation"], "note_count"=>$row["note_count"], "InsertedOn" => $row["InsertedOn"]);
 			}
 			return $tmp;
 		} else {
@@ -51,21 +51,25 @@ class complaint extends BaseDB {
 	protected $_RoomID;
 	protected $_Complaint;
 	protected $_Status;
+	protected $_LongTermRenovation;
 	protected $_InsertedOn;
 
 	public function getID() { return $this->_ID; }
 	public function getRoomID() { return $this->_RoomID; }
 	public function getComplaint() { return $this->_Complaint; }
 	public function getStatus() { return $this->_Status; }
+	public function getLongTermRenovation() { return $this->_LongTermRenovation; }
 	public function getInsertedOn() { return $this->_InsertedOn; }
+
 
 	public function setID($value) { $this->_ID = $value; }
 	public function setRoomID($value) { $this->_RoomID = $value; }
 	public function setComplaint($value) { $this->_Complaint = $value; }
 	public function setStatus($value) { $this->_Status = $value; }
+	public function setLongTermRenovation($value) { $this->_LongTermRenovation = $value; }
 	public function setInsertedOn($value) { $this->_InsertedOn = $value; }
 
-	protected $columns = array("ID", "RoomID", "Complaint", "Status");
+	protected $columns = array("ID", "RoomID", "Complaint", "Status", "LongTermRenovation");
 	protected $db;
 
 	public function __construct($id=null) {
