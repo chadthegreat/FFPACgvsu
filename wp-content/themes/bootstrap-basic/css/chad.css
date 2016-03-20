@@ -1,0 +1,40 @@
+/* Room Select box and Navigation bar */
+div#home-content.container, nav.navbar.navbar-default{
+    background-color: #004371;
+}
+
+/* Top nav bar when selected */
+.navbar-nav > .active > a{
+    background-color: #0065A7 !important;
+}
+
+/* Table title, description and selection titles*/
+h1, p, label, h3.panel-title, a{
+    color: white !important;
+}
+
+/* Rest of background */
+body{
+    background-color: #0065A7;
+}
+
+/* padded the bottom of user selection box */
+div.row{
+    padding-bottom: 20px;
+}
+
+/* Select button */
+input.btn.btn-block.btn-primary, button#NewComplaint.btn.btn-block.btn-primary{
+    background-color :#0065A7;
+}
+
+/* Color for table list of results of complaints*/
+th{
+    color: white;
+}
+
+/* Colors for sub table on some pages*/
+div.panel-body, div.panel-heading{
+    background-color: #004371 !important;
+    border-color: #004371 !important;
+}
