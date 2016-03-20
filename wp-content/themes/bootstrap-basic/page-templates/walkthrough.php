@@ -55,19 +55,6 @@ get_header();
 		</form>
 		<div class="row">
 			<div class="col-xs-12">
-				<div id="complaints" class="table-responsive">
-					<?php
-					if(isset($_SESSION["APP"]["room"]) && !empty($_SESSION["APP"]["room"])) {
-						$complaints = new complaintArray();
-						$data = $complaints->loadByRoom($_SESSION["APP"]["room"]);
-						include_once ABSPATH . '/Application/templates/complaints.php';
-					}
-					?>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">New Complaint/Request</h3>
@@ -77,6 +64,28 @@ get_header();
 							<textarea id="newcomplainttext" class="form-control"></textarea>
 						</div>
 						<button id="NewComplaint" class="btn btn-block btn-primary">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Complaints</h3>
+					</div>
+					<div class="panel-body">
+						<div id="complaints" class="table-responsive">
+							<?php
+							if(isset($_SESSION["APP"]["room"]) && !empty($_SESSION["APP"]["room"])) {
+								$complaints = new complaintArray();
+								$data = $complaints->loadByRoom($_SESSION["APP"]["room"]);
+								include_once ABSPATH . '/Application/templates/complaints.php';
+							} else {
+								echo "No complaints.";
+							}
+							?>
+						</div>
 					</div>
 				</div>
 			</div>
