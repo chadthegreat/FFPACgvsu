@@ -11,3 +11,4 @@ This folder contains the following important documents:
 
   [Prospectus]:      <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/Prospectus.docx>
   [Design Document]: <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/DesignDocument.pdf>
+  [Milestone 2]: <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/Milestone2TeamGVSUreport.pdf>
