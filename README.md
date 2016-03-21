@@ -8,6 +8,7 @@ This is our capstone project. We consist of:
 This folder contains the following important documents:
 * [Prospectus]
 * [Design Document]
+* [Milestone 2]
 
   [Prospectus]:      <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/Prospectus.docx>
   [Design Document]: <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/DesignDocument.pdf>
