@@ -35,7 +35,7 @@ var loadcampus = function () {
       populate_dropdown('select[name="campus"]', data);
     },
     error: function( xhr, status, errorThrown ) {
-      Error_Output(xhr, status, errorThrown);
+      ////Error_Output(xhr, status, errorThrown);
     }
   });
 };
@@ -49,7 +49,7 @@ var loadbuilding = function (campus) {
       populate_dropdown('select[name="building"]', data);
     },
     error: function( xhr, status, errorThrown ) {
-      Error_Output(xhr, status, errorThrown);
+      //Error_Output(xhr, status, errorThrown);
     }
   });
 };
@@ -63,7 +63,7 @@ var loadroom = function (building) {
       populate_dropdown('select[name="room"]', data);
     },
     error: function( xhr, status, errorThrown ) {
-      Error_Output(xhr, status, errorThrown);
+      //Error_Output(xhr, status, errorThrown);
     }
   });
 };
@@ -77,7 +77,7 @@ var loadcomplaint = function (room) {
       $('#complaints').html(data);
     },
     error: function( xhr, status, errorThrown ) {
-      Error_Output(xhr, status, errorThrown);
+      //Error_Output(xhr, status, errorThrown);
     }
   });
 };
@@ -91,7 +91,7 @@ var loadattributes = function (room) {
       $('#attribute_list').html(data);
     },
     error: function( xhr, status, errorThrown ) {
-      Error_Output(xhr, status, errorThrown);
+      //Error_Output(xhr, status, errorThrown);
     }
   });
 };
@@ -106,7 +106,7 @@ function loadnote(complaint) {
       $('#note-edit').modal('show');
     },
     error: function( xhr, status, errorThrown ) {
-      Error_Output(xhr, status, errorThrown);
+      //Error_Output(xhr, status, errorThrown);
     }
   });
 }
@@ -122,7 +122,7 @@ var postcomplaint = function (room, complaint) {
     },
     error: function( xhr, status, errorThrown ) {
       toastr["error"]("Complaint could not be saved");
-      Error_Output(xhr, status, errorThrown);
+      //Error_Output(xhr, status, errorThrown);
     }
   });
 };
