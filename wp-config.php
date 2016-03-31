@@ -29,7 +29,7 @@ define('DB_USER', 'ffpac');
 define('DB_PASSWORD', '2sJrDmQnhahzSCjM');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'barnescode.db');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8mb4');
