@@ -15,3 +15,4 @@ This folder contains the following important documents:
   [Design Document]: <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/DesignDocument.pdf>
   [Milestone 1]: <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/Milestone.docx>
   [Milestone 2]: <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/Milestone2TeamGVSUreport.pdf>
+  [Design Critique 2]: <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/DesignCritique2.pdf>
