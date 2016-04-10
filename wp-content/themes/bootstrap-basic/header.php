@@ -4,6 +4,9 @@
  *
  * @package bootstrap-basic
  */
+if(!is_user_logged_in()) {
+	wp_redirect('/wp-login.php');
+}
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>  <html class="no-js lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); ?>> <![endif]-->

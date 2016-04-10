@@ -44,6 +44,61 @@ class complaintArray extends ArrayClass {
 			return false;
 		}
 	}
+
+	function loadCampusLeaderboard() {
+		$strSQL = "SELECT campus.Name AS Campus, COUNT(complaint.Complaint) AS Count
+			FROM campus
+				INNER JOIN building ON campus.ID = building.CampusID
+				INNER JOIN room ON building.ID = room.BuildingID
+					INNER JOIN complaint ON room.ID = complaint.RoomID
+			GROUP BY campus.Name
+			ORDER BY COUNT(complaint.Complaint) DESC";
+		$this->db->SetQueryStmt($strSQL);
+		if($this->db->Query()) {
+			$tmp = array();
+			foreach($this->db->GetAll() as $row) {
+				$tmp[] = $row;
+			}
+			return $tmp;
+		}
+		return false;
+	}
+
+	function loadBuildingLeaderboard() {
+		$strSQL = "SELECT building.Name AS Building, COUNT(complaint.Complaint) AS Count
+			FROM building
+				INNER JOIN room ON building.ID = room.BuildingID
+					INNER JOIN complaint ON room.ID = complaint.RoomID
+			GROUP BY building.Name
+			ORDER BY COUNT(complaint.Complaint) DESC";
+		$this->db->SetQueryStmt($strSQL);
+		if($this->db->Query()) {
+			$tmp = array();
+			foreach($this->db->GetAll() as $row) {
+				$tmp[] = $row;
+			}
+			return $tmp;
+		}
+		return false;
+	}
+
+	function loadRoomLeaderboard() {
+		$strSQL = "SELECT complaint.RoomID, campus.Name AS Campus, building.Name AS Building, room.RoomNumber AS Room, COUNT(Complaint) AS Count FROM `complaint` AS complaint
+			INNER JOIN `room` AS room ON complaint.RoomID = room.ID
+			INNER JOIN `building` AS building ON building.ID = room.BuildingID
+			INNER JOIN `campus` AS campus ON campus.ID = building.CampusID
+			GROUP BY complaint.RoomID, room.RoomNumber
+			ORDER BY Count(Complaint) DESC";
+		$this->db->SetQueryStmt($strSQL);
+		if($this->db->Query()) {
+			$tmp = array();
+			foreach($this->db->GetAll() as $row) {
+				$tmp[] = $row;
+			}
+			return $tmp;
+		}
+		return false;
+	}
 }
 
 class complaint extends BaseDB {
