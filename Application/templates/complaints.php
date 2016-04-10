@@ -14,7 +14,7 @@ $complaint_status = array("Fixed", "In Progress", "Not Fixed");
 	<tbody>
 	<?php foreach($data as $row) { ?>
 		<tr data-id="<?php echo $row["ID"]; ?>">
-			<td><?php echo $row["Complaint"]; ?></td>
+			<td><?php echo $row["User"]; echo "<br />"; echo $row["Complaint"]; ?></td>
 			<td data-task="note-edit" class="note-edit"><?php
 				if($row["note_count"] > 0) {
 					echo '<span class="glyphicon glyphicon-pencil">&nbsp;</span>Click to edit notes';

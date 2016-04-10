@@ -37,7 +37,8 @@ class complaintArray extends ArrayClass {
 		if($this->db->Query()) {
 			$tmp = array();
 			foreach ($this->db->GetAll() as $row) {
-				$tmp[] = array("ID"=>$row["ID"], "Complaint"=>$row["Complaint"], "Status"=>$row["Status"], "LongTermRenovation"=>$row["LongTermRenovation"], "note_count"=>$row["note_count"], "InsertedOn" => $row["InsertedOn"]);
+				$user_info = get_userdata($row["UserID"]);
+				$tmp[] = array("ID"=>$row["ID"], "Complaint"=>$row["Complaint"], "Status"=>$row["Status"], "LongTermRenovation"=>$row["LongTermRenovation"], "note_count"=>$row["note_count"], "InsertedOn" => $row["InsertedOn"], "User" => $user_info->data->display_name);
 			}
 			return $tmp;
 		} else {
