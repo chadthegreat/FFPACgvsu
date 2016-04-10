@@ -1,7 +1,4 @@
 <?php
-
-$user_info = get_userdata(1);
-echo "<pre>";print_r($user_info);echo "</pre>";
 /*
  * Template Name: Walkthrough
  *
