@@ -200,3 +200,8 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/widgets/BootstrapBasicSearchWidget.php';
 require get_template_directory() . '/inc/template-widgets-hook.php';
 
+
+function my_login_logo_url_title() {
+	return 'You are required to login with your email and password to use this application.';
+}
+add_filter( 'login_message', 'my_login_logo_url_title' );
