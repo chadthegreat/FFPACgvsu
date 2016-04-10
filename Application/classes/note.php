@@ -33,7 +33,8 @@ class noteArray extends ArrayClass {
 		if($this->db->Query()) {
 			$tmp = array();
 			foreach ($this->db->GetAll() as $row) {
-				$tmp[] = array("ID" => $row["ID"], "Note"=>$row["Note"]);
+				$user_info = get_userdata($row["UserID"]);
+				$tmp[] = array("ID" => $row["ID"], "Note"=>$row["Note"], "User" => $user_info->data->display_name);
 			}
 			return $tmp;
 		} else {
@@ -73,16 +74,19 @@ class note extends BaseDB {
 	protected $_ComplaintID;
 	protected $_Note;
 	protected $_InsertedOn;
+	protected $_UserID;
 
 	public function getID() { return $this->_ID; }
 	public function getComplaintID() { return $this->_ComplaintID; }
 	public function getNote() { return $this->_Note; }
 	public function getInsertedOn() { return $this->_InsertedOn; }
+	public function getUserID() { return $this->_UserID; }
 
 	public function setID($value) { $this->_ID = $value; }
 	public function setComplaintID($value) { $this->_ComplaintID = $value; }
 	public function setNote($value) { $this->_Note = $value; }
 	public function setInsertedOn($value) { $this->_InsertedOn = $value; }
+	public function setUserID($value) { $this->_UserID = $value; }
 
 	protected $columns = array("ID", "ComplaintID", "Note");
 	protected $db;
@@ -109,6 +113,7 @@ class note extends BaseDB {
 	}
 
 	private function insert() {
+		$this->setUserID(get_current_user_id());
 		$this->setInsertedOn(time());
 		$strSQL = $this->db->IStatement(get_class($this),self::prepare_data());
 		$this->db->setQueryStmt($strSQL);

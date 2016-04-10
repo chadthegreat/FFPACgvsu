@@ -1,5 +1,5 @@
 <?php
-$complaint_status = array("Fixed", "Partly Fixed", "Not Fixed");
+$complaint_status = array("Fixed", "In Progress", "Not Fixed");
 ?>
 <table class="table table-condensed table-striped">
 	<thead>
@@ -36,7 +36,7 @@ $complaint_status = array("Fixed", "Partly Fixed", "Not Fixed");
 			<td>
 				<input type="checkbox" name="LongTermRenovation" class="form-control" <?php echo ($row["LongTermRenovation"]) ? "checked" : ""; ?> />
 			</td>
-			<td><?php echo $row["InsertedOn"]; ?></td>
+			<td><?php echo substr($row["InsertedOn"],0,10); ?></td>
 		</tr>
 	<?php } ?>
 	</tbody>

@@ -3,12 +3,14 @@
 	<table class="table table-condensed">
 		<thead>
 		<tr>
+			<th>User</th>
 			<th>Notes</th>
 		</tr>
 		</thead>
 		<tbody>
 		<?php foreach($data as $row) { ?>
 			<tr data-note-id="<?php echo $row["ID"]; ?>">
+				<td><?php echo $row["User"]; ?></td>
 				<td>
 					<button type="button" class="close alert-danger" aria-label="Delete">
 						<span aria-hidden="true">×</span>

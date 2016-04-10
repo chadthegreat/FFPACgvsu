@@ -108,6 +108,7 @@ class complaint extends BaseDB {
 	protected $_Status;
 	protected $_LongTermRenovation;
 	protected $_InsertedOn;
+	protected $_UserID;
 
 	public function getID() { return $this->_ID; }
 	public function getRoomID() { return $this->_RoomID; }
@@ -115,6 +116,7 @@ class complaint extends BaseDB {
 	public function getStatus() { return $this->_Status; }
 	public function getLongTermRenovation() { return $this->_LongTermRenovation; }
 	public function getInsertedOn() { return $this->_InsertedOn; }
+	public function getUserID() { return $this->_UserID; }
 
 
 	public function setID($value) { $this->_ID = $value; }
@@ -123,8 +125,9 @@ class complaint extends BaseDB {
 	public function setStatus($value) { $this->_Status = $value; }
 	public function setLongTermRenovation($value) { $this->_LongTermRenovation = $value; }
 	public function setInsertedOn($value) { $this->_InsertedOn = $value; }
+	public function setUserID($value) { $this->_UserID = $value; }
 
-	protected $columns = array("ID", "RoomID", "Complaint", "Status", "LongTermRenovation");
+	protected $columns = array("ID", "RoomID", "Complaint", "Status", "LongTermRenovation", "UserID");
 	protected $db;
 
 	public function __construct($id=null) {
@@ -149,6 +152,7 @@ class complaint extends BaseDB {
 	}
 
 	private function insert() {
+		$this->setUserID(get_current_user_id());
 		$this->setInsertedOn(time());
 		$strSQL = $this->db->IStatement(get_class($this),self::prepare_data());
 		$this->db->setQueryStmt($strSQL);
