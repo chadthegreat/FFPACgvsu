@@ -88,7 +88,7 @@ class note extends BaseDB {
 	public function setInsertedOn($value) { $this->_InsertedOn = $value; }
 	public function setUserID($value) { $this->_UserID = $value; }
 
-	protected $columns = array("ID", "ComplaintID", "Note");
+	protected $columns = array("ID", "ComplaintID", "Note", "UserID");
 	protected $db;
 
 	public function __construct($id=null) {
