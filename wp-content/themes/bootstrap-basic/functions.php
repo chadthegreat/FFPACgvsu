@@ -205,3 +205,9 @@ function my_login_logo_url_title() {
 	return 'You are required to login with your email and password to use this application.';
 }
 add_filter( 'login_message', 'my_login_logo_url_title' );
+
+function soi_login_redirect($redirect_to, $request, $user)
+{
+	return (is_array($user->roles) && in_array('administrator', $user->roles)) ? admin_url() : site_url();
+}
+add_filter('login_redirect', 'soi_login_redirect', 10, 3);
