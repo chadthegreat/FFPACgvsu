@@ -10,10 +10,12 @@ This folder contains the following important documents:
 * [Design Document]
 * [Milestone 1]
 * [Milestone 2]
+* [Milestone 3]
 * [Design Critique 2]
 
   [Prospectus]:      <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/Prospectus.docx>
   [Design Document]: <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/DesignDocument.pdf>
   [Milestone 1]: <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/Milestone.docx>
   [Milestone 2]: <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/Milestone2TeamGVSUreport.pdf>
+  [Milestone 3]: <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/Milestone3.pdf>
   [Design Critique 2]: <https://github.com/chadthegreat/FFPACgvsu/blob/master/Documents/DesignCritique2.pdf>
